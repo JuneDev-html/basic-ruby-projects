@@ -14,4 +14,4 @@ def caesar_cipher(string, shift)
   return new_string.join("")
 end
 
-p caesar_cipher("'Bang...' -Spike Spiegel", 30)
+p caesar_cipher("See you, space cowboy...", 30)
