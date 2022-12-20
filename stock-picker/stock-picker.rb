@@ -1,22 +1,17 @@
 prices = [17,3,6,9,15,8,6,1,10]
 def stock_picker(prices)
-  biggest_difference = -1.0/0.0
-  best_return = []
-  # start pointer 1 holding left position
-  prices.each_with_index do |left_pointer, l_idx|
-    # start pointer 2 moving along right position but only if its after pointer 1
-    prices.each_with_index do |right_pointer, r_idx|\
-      if l_idx < r_idx #only if number is after pointer 1
-        if (right_pointer - left_pointer) > biggest_difference # if the difference between the two is the biggest yet, update info
-          biggest_difference = right_pointer - left_pointer
-          best_return[0] = left_pointer
-          best_return[1] = right_pointer
+  max_profit = -1.0/0.0
+  best_days = []
+  prices.each_with_index do |l_pointer, l_idx|
+    prices.each_with_index do |r_pointer, r_idx|
+        if (r_pointer - l_pointer) > max_profit && l_idx < r_idx
+          max_profit = r_pointer - l_pointer
+          best_days[0] = l_idx
+          best_days[1] = r_idx
         end
-      end
     end
   end
-
-  best_return
+  best_days
 end
 
 p stock_picker(prices)
